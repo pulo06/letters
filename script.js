@@ -74,7 +74,7 @@ const letters = {
 
       <p>For me, looks never really played a huge role when it came to someone's personality, so yeah, I fell for the little things you did and the way you always made me feel understood. But when I realized that we're better off as friends, I kinda backed off and accepted that maybe we just weren't meant to be that way. And honestly, that made me realize that some things are beautiful even when they don't turn out the way you once imagined them to.</p>
 
-      <p>So yeah, dw, I don't like you in that way anymore. Just as good friends, I promise. I'm just really glad things turned out the way they did, because I wouldn't want to lose the friendship we have now.</p>
+      <p>So yeah, dw, I don't like you in that way anymore haha. Just as good friends, I promise. I'm just really glad things turned out the way they did, because I wouldn't want to lose the friendship we have now.</p>
 
       <p>Anywayyy, that's something I've wanted to tell you for a while hehe. Now you know.</p>
 
@@ -116,11 +116,11 @@ const letters = {
 
       <p>I'm sorry for all the times I've kept you on call for HOURS just because I had way too much to say. You'd literally just sit there and listen to me yap about everything and somehow never tell me to shut up. You even fell asleep while I was talking once, which still makes me laugh whenever I think about it. I found it really cute though.</p>
 
-      <p>You always used to say that I could never annoy you, but I was still scared that one day I might actually get on your nerves lmao.</p>
+      <p>You always used to say that I could never annoy you, but I am still scared that one day I might actually get on your nerves lmao.</p>
 
       <p>I'm also sorry for making you stay up late because of me, especially when you probably should've been sleeping instead of staying up and replying to all my random stuff.</p>
 
-      <p>And yeah, I'm sorry for liking you too, even though I knew I probably shouldn't have. I never wanted that to make things weird between us, so I hope you can forgive me.</p>
+      <p>And yeah, I'm sorry for liking you too, even though I knew I probably shouldn't have. I never wanted things to get weird between us, so I hope you can forgive me for that.</p>
 
       <p>I guess this is just me saying sorry for all the little things I've probably done without realizing, and thank you for putting up with me anyway.</p>
 
