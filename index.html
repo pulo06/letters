@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>little letters — from Pulo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 18%, rgba(250, 205, 215, 0.15), transparent 18%),
+        radial-gradient(circle at 84% 23%, rgba(205, 225, 239, 0.15), transparent 20%),
+        radial-gradient(circle at 20% 78%, rgba(218, 229, 204, 0.13), transparent 19%),
+        #fffaf4;
+    color: #8a746c;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.doodle {
+    position: absolute;
+    opacity: 0.36;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f1cbd2;
+}
+
+.dot.blue {
+    background: #c9dfec;
+}
+
+.dot.yellow {
+    background: #f0dfad;
+}
+
+.dot.green {
+    background: #d0dfc5;
+}
+
+.small-flower {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+}
+
+.small-flower .center {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ecd99f;
+    border-radius: 50%;
+    left: 16px;
+    top: 16px;
+    z-index: 2;
+}
+
+.small-flower span {
+    position: absolute;
+    width: 16px;
+    height: 13px;
+    border-radius: 50%;
+    background: #f7d9de;
+}
+
+.small-flower span:nth-child(1) {
+    top: 2px;
+    left: 13px;
+}
+
+.small-flower span:nth-child(2) {
+    top: 13px;
+    left: 2px;
+    transform: rotate(-45deg);
+}
+
+.small-flower span:nth-child(3) {
+    top: 27px;
+    left: 12px;
+}
+
+.small-flower span:nth-child(4) {
+    top: 14px;
+    left: 25px;
+    transform: rotate(45deg);
+}
+
+.flower-blue span {
+    background: #d3e6f0;
+}
+
+.flower-lavender span {
+    background: #ded7ec;
+}
+
+.flower-yellow span {
+    background: #f5e7b8;
+}
+
+.flower-green span {
+    background: #dce8d4;
+}
+
+.leaf {
+    position: absolute;
+    width: 25px;
+    height: 12px;
+    background: #c4d7b7;
+    border-radius: 100% 0 100% 0;
+}
+
+.sparkle {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+}
+
+.sparkle::before,
+.sparkle::after {
+    content: "";
+    position: absolute;
+    background: #eddaa9;
+    border-radius: 50%;
+}
+
+.sparkle::before {
+    width: 3px;
+    height: 17px;
+    left: 7px;
+    top: 0;
+}
+
+.sparkle::after {
+    width: 17px;
+    height: 3px;
+    left: 0;
+    top: 7px;
+}
+
+.paper-scrap {
+    position: absolute;
+    width: 45px;
+    height: 31px;
+    border-radius: 3px;
+    opacity: 0.42;
+    transform: rotate(-12deg);
+}
+
+.paper-pink {
+    background: #f7dfe2;
+}
+
+.paper-blue {
+    background: #deedf3;
+}
+
+.paper-yellow {
+    background: #f5ebc9;
+}
+
+.paper-green {
+    background: #e5eedf;
+}
+
+.page {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 94vw);
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 58px 20px 70px;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    font-size: clamp(70px, 8vw, 108px);
+    line-height: 0.9;
+    font-weight: 500;
+    letter-spacing: -4px;
+    color: #8b7068;
+}
+
+.subtitle {
+    margin-top: 22px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #aa8d84;
+}
+
+.mailbox-area {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mailbox-wrap {
+    position: relative;
+    width: 360px;
+    height: 310px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.mailbox-wrap:hover {
+    transform: translateY(-4px);
+}
+
+.mailbox-wrap.shake {
+    animation: mailboxShake 0.65s ease;
+}
+
+@keyframes mailboxShake {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-2deg); }
+    40% { transform: rotate(2deg); }
+    60% { transform: rotate(-1.5deg); }
+    80% { transform: rotate(1deg); }
+}
+
+.mailbox-shadow {
+    position: absolute;
+    width: 230px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(130, 106, 96, 0.09);
+    bottom: 8px;
+    left: 65px;
+    filter: blur(5px);
+}
+
+.mailbox-post {
+    position: absolute;
+    width: 30px;
+    height: 85px;
+    left: 165px;
+    bottom: 13px;
+    background: #d6bc9f;
+    border-radius: 3px;
+}
+
+.mailbox-body {
+    position: absolute;
+    width: 270px;
+    height: 235px;
+    left: 45px;
+    top: 28px;
+    background: #edc5ca;
+    border: 2px solid #e2afb7;
+    border-radius: 92px 92px 24px 24px;
+    box-shadow:
+        inset 0 8px rgba(255,255,255,0.2),
+        0 10px 22px rgba(120,92,80,0.08);
+}
+
+.mailbox-inside {
+    position: absolute;
+    width: 230px;
+    height: 178px;
+    left: 18px;
+    top: 20px;
+    background: #b7aaad;
+    border-radius: 72px 72px 14px 14px;
+    overflow: hidden;
+}
+
+.mailbox-highlight {
+    position: absolute;
+    width: 180px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    top: 18px;
+    left: 33px;
+}
+
+.mail-slot {
+    position: absolute;
+    width: 95px;
+    height: 10px;
+    background: #95878a;
+    border-radius: 30px;
+    top: 27px;
+    left: 75px;
+}
+
+.mail-inside-paper {
+    position: absolute;
+    width: 155px;
+    height: 88px;
+    background: #fff0ea;
+    left: 45px;
+    top: 48px;
+    transform: rotate(-3deg);
+    border-radius: 3px;
+}
+
+.mail-inside-paper::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    width: 110px;
+    height: 55px;
+    border-left: 1px solid rgba(100,80,70,0.12);
+    border-bottom: 1px solid rgba(100,80,70,0.12);
+    transform: rotate(-45deg);
+}
+
+.mailbox-door {
+    position: absolute;
+    width: 270px;
+    height: 82px;
+    left: 0;
+    bottom: -2px;
+    background: #ebc0c7;
+    border: 2px solid #e2afb7;
+    border-radius: 16px 16px 24px 24px;
+    transform-origin: top center;
+    transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+    z-index: 10;
+}
+
+.mailbox-wrap.open .mailbox-door {
+    transform: perspective(500px) rotateX(-68deg);
+}
+
+.mail-label {
+    position: absolute;
+    width: 136px;
+    height: 47px;
+    background: #fff9ed;
+    left: 67px;
+    top: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Patrick Hand", cursive;
+    font-size: 23px;
+    color: #8a7169;
+    transform: rotate(-2deg);
+    border-radius: 3px;
+}
+
+.mail-handle {
+    position: absolute;
+    width: 28px;
+    height: 8px;
+    border-radius: 10px;
+    background: #c5aa84;
+    left: 128px;
+    bottom: 10px;
+}
+
+.mail-flower {
+    position: absolute;
+    width: 70px;
+    height: 135px;
+    bottom: 43px;
+    z-index: 12;
+}
+
+.mail-flower.left {
+    left: -20px;
+    transform: rotate(-5deg);
+}
+
+.mail-flower.right {
+    right: -20px;
+    transform: scaleX(-1) rotate(-5deg);
+}
+
+.flower-stem {
+    position: absolute;
+    width: 5px;
+    height: 100px;
+    background: #a8bc98;
+    left: 32px;
+    top: 31px;
+    border-radius: 10px;
+}
+
+.flower-leaf {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    background: #b9cda9;
+    border-radius: 100% 0 100% 0;
+}
+
+.flower-leaf.one {
+    left: 5px;
+    top: 72px;
+    transform: rotate(-25deg);
+}
+
+.flower-leaf.two {
+    left: 35px;
+    top: 91px;
+    transform: rotate(45deg);
+}
+
+.flower-head {
+    position: absolute;
+    width: 47px;
+    height: 47px;
+    top: 0;
+    left: 8px;
+}
+
+.flower-head::before,
+.flower-head::after {
+    content: "";
+    position: absolute;
+    background: #f6d8dd;
+    width: 22px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+.flower-head::before {
+    left: 0;
+    top: 14px;
+    transform: rotate(-35deg);
+    box-shadow:
+        25px -5px 0 #f6d8dd,
+        28px 17px 0 #f6d8dd,
+        5px 27px 0 #f6d8dd;
+}
+
+.flower-head::after {
+    width: 11px;
+    height: 11px;
+    background: #ecd99f;
+    left: 18px;
+    top: 19px;
+}
+
+.instruction {
+    margin-top: -4px;
+    margin-bottom: 25px;
+    color: #a18b83;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.instruction strong {
+    font-weight: 600;
+}
+
+.letters-area {
+    position: relative;
+    width: min(1050px, 94vw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    justify-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    transition:
+        opacity 0.6s ease,
+        transform 0.7s ease;
+}
+
+.letters-area.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.envelope {
+    position: relative;
+    width: 178px;
+    height: 118px;
+    cursor: pointer;
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease,
+        filter 0.4s ease;
+    opacity: 0;
+    transform: translateY(-55px) scale(0.75);
+}
+
+.envelope.pop {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.envelope:hover {
+    transform: translateY(-8px) rotate(-1deg) scale(1.03);
+}
+
+.envelope.locked {
+    opacity: 0.25;
+    filter: grayscale(0.3);
+    pointer-events: none;
+}
+
+.envelope.selected {
+    transform: translateY(-10px) scale(1.04);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 5px;
+    box-shadow: 0 8px 18px rgba(90,65,55,0.1);
+}
+
+.envelope:nth-child(1) .envelope-back {
+    background: #f7dfe2;
+}
+
+.envelope:nth-child(1) .envelope-flap {
+    border-top-color: #edc2c9;
+}
+
+.envelope:nth-child(1) .envelope-left,
+.envelope:nth-child(1) .envelope-right {
+    border-left-color: #f2d3d8;
+    border-right-color: #f2d3d8;
+}
+
+.envelope:nth-child(1) .envelope-bottom {
+    border-bottom-color: #edc6cc;
+}
+.envelope:nth-child(2) .envelope-back {
+    background: #e0edf3;
+}
+
+.envelope:nth-child(2) .envelope-flap {
+    border-top-color: #c8dfe9;
+}
+
+.envelope:nth-child(2) .envelope-left,
+.envelope:nth-child(2) .envelope-right {
+    border-left-color: #d5e7ee;
+    border-right-color: #d5e7ee;
+}
+
+.envelope:nth-child(2) .envelope-bottom {
+    border-bottom-color: #cfe3eb;
+}
+
+.envelope:nth-child(3) .envelope-back {
+    background: #f7edc9;
+}
+
+.envelope:nth-child(3) .envelope-flap {
+    border-top-color: #ecdda9;
+}
+
+.envelope:nth-child(3) .envelope-left,
+.envelope:nth-child(3) .envelope-right {
+    border-left-color: #f1e5bb;
+    border-right-color: #f1e5bb;
+}
+
+.envelope:nth-child(3) .envelope-bottom {
+    border-bottom-color: #ecdfb2;
+}
+
+.envelope:nth-child(4) .envelope-back {
+    background: #e8e2f0;
+}
+
+.envelope:nth-child(4) .envelope-flap {
+    border-top-color: #d6cee3;
+}
+
+.envelope:nth-child(4) .envelope-left,
+.envelope:nth-child(4) .envelope-right {
+    border-left-color: #ded8e9;
+    border-right-color: #ded8e9;
+}
+
+.envelope:nth-child(4) .envelope-bottom {
+    border-bottom-color: #d8d1e4;
+}
+.envelope:nth-child(5) .envelope-back {
+    background: #e3ecd9;
+}
+
+.envelope:nth-child(5) .envelope-flap {
+    border-top-color: #cbdcbf;
+}
+
+.envelope:nth-child(5) .envelope-left,
+.envelope:nth-child(5) .envelope-right {
+    border-left-color: #d5e3cb;
+    border-right-color: #d5e3cb;
+}
+
+.envelope:nth-child(5) .envelope-bottom {
+    border-bottom-color: #cfdfc5;
+}
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 89px solid transparent;
+    border-right: 89px solid transparent;
+    border-top: 60px solid;
+    z-index: 3;
+}
+
+.envelope-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-top: 59px solid transparent;
+    border-bottom: 59px solid transparent;
+    border-left: 89px solid;
+    z-index: 2;
+}
+
+.envelope-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-top: 59px solid transparent;
+    border-bottom: 59px solid transparent;
+    border-right: 89px solid;
+    z-index: 2;
+}
+
+.envelope-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 89px solid transparent;
+    border-right: 89px solid transparent;
+    border-bottom: 65px solid;
+    z-index: 4;
+}
+
+.stamp {
+    position: absolute;
+    width: 25px;
+    height: 29px;
+    right: 13px;
+    top: 15px;
+    background: #ead9a7;
+    border: 2px dashed rgba(120,90,70,0.2);
+    z-index: 6;
+}
+
+.envelope-title {
+    position: absolute;
+    left: 50%;
+    top: 72px;
+    transform: translateX(-50%);
+    width: 145px;
+    z-index: 7;
+    font-family: "Fraunces", serif;
+    font-size: 14px;
+    color: #866d65;
+    line-height: 1.15;
+}
+
+.letter-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 249, 242, 0.94);
+    backdrop-filter: blur(7px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+    z-index: 100;
+}
+
+.letter-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.letter-paper {
+    position: relative;
+    width: min(720px, 94vw);
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 58px clamp(30px, 7vw, 70px);
+    background: #fffdf8;
+    border-radius: 5px;
+    box-shadow: 0 20px 50px rgba(90,65,55,0.14);
+    transform: translateY(35px) scale(0.96);
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+    text-align: left;
+}
+
+.letter-overlay.open .letter-paper {
+    transform: translateY(0) scale(1);
+}
+
+.close-letter {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    font-size: 27px;
+    font-weight: 300;
+    color: #a89088;
+    cursor: pointer;
+}
+
+.letter-heading {
+    margin: 0 0 32px;
+    font-family: "Fraunces", serif;
+    font-size: clamp(30px, 5vw, 45px);
+    font-weight: 500;
+    color: #846a62;
+    text-align: center;
+}
+
+.letter-body {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #75645d;
+}
+
+.letter-body p {
+    margin: 0 0 22px;
+}
+
+.letter-body strong {
+    font-weight: 600;
+    color: #80665e;
+}
+
+.letter-body .signature {
+    margin-top: 32px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #75645d;
+}
+
+.petal {
+    position: fixed;
+    width: 9px;
+    height: 13px;
+    border-radius: 80% 20% 80% 20%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 50;
+    transform: rotate(25deg);
+}
+
+.petal.active {
+    animation: petalFall 6s linear forwards;
+}
+
+@keyframes petalFall {
+
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) rotate(25deg);
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(110vh)
+            translateX(80px)
+            rotate(280deg);
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .letters-area {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 650px;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .page {
+        padding-top: 45px;
+    }
+
+    .title {
+        font-size: clamp(54px, 15vw, 78px);
+        letter-spacing: -2px;
+    }
+
+    .subtitle {
+        margin-top: 16px;
+        font-size: 12px;
+    }
+
+    .mailbox-area {
+        height: 370px;
+    }
+
+    .mailbox-wrap {
+        transform: scale(0.82);
+    }
+
+    .mailbox-wrap:hover {
+        transform: scale(0.82) translateY(-4px);
+    }
+
+    .letters-area {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 12px;
+    }
+
+    .envelope {
+        width: 160px;
+        height: 105px;
+    }
+
+    .envelope-flap {
+        border-left-width: 80px;
+        border-right-width: 80px;
+        border-top-width: 54px;
+    }
+
+    .envelope-left {
+        border-top-width: 52px;
+        border-bottom-width: 52px;
+        border-left-width: 80px;
+    }
+
+    .envelope-right {
+        border-top-width: 52px;
+        border-bottom-width: 52px;
+        border-right-width: 80px;
+    }
+
+    .envelope-bottom {
+        border-left-width: 80px;
+        border-right-width: 80px;
+        border-bottom-width: 58px;
+    }
+
+    .envelope-title {
+        top: 63px;
+        width: 130px;
+        font-size: 13px;
+    }
+
+    .letter-paper {
+        padding: 52px 27px 45px;
+    }
+
+    .letter-body {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+}
+
+@media (max-width: 390px) {
+
+    .letters-area {
+        grid-template-columns: 1fr;
+    }
+
+    .mail-flower.left {
+        left: -5px;
+    }
+
+    .mail-flower.right {
+        right: -5px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="doodle dot" style="left:8%; top:22%;"></div>
+    <div class="doodle dot blue" style="left:16%; top:68%;"></div>
+    <div class="doodle dot yellow" style="left:89%; top:17%;"></div>
+    <div class="doodle dot green" style="left:92%; top:70%;"></div>
+
+    <div class="small-flower" style="left:7%; top:12%;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-blue" style="right:8%; top:31%;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-lavender" style="left:10%; top:82%;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-yellow" style="right:10%; top:77%;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="sparkle" style="left:19%; top:28%;"></div>
+    <div class="sparkle" style="right:18%; top:58%;"></div>
+
+    <div class="paper-scrap paper-pink" style="left:4%; top:46%;"></div>
+    <div class="paper-scrap paper-blue" style="right:4%; top:12%;"></div>
+    <div class="paper-scrap paper-yellow" style="right:16%; top:87%;"></div>
+    <div class="paper-scrap paper-green" style="left:20%; top:92%;"></div>
+
+</div>
+
+
+<main class="page">
+
+    <h1 class="title">
+        little letters
+    </h1>
+
+    <div class="subtitle">
+        from Pulo
+    </div>
+
+
+    <section class="mailbox-area">
+
+        <div class="mailbox-wrap" id="mailbox">
+
+            <div class="mailbox-shadow"></div>
+
+            <div class="mailbox-post"></div>
+
+            <div class="mailbox-body">
+
+                <div class="mailbox-inside">
+
+                    <div class="mailbox-highlight"></div>
+
+                    <div class="mail-slot"></div>
+
+                    <div class="mail-inside-paper"></div>
+
+                </div>
+
+                <div class="mailbox-door">
+
+                    <div class="mail-label">
+                        FOR TSUKI
+                    </div>
+
+                    <div class="mail-handle"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="mail-flower left">
+
+                <div class="flower-stem"></div>
+
+                <div class="flower-leaf one"></div>
+                <div class="flower-leaf two"></div>
+
+                <div class="flower-head"></div>
+
+            </div>
+
+
+            <div class="mail-flower right">
+
+                <div class="flower-stem"></div>
+
+                <div class="flower-leaf one"></div>
+                <div class="flower-leaf two"></div>
+
+                <div class="flower-head"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="instruction" id="instruction">
+        Click the mailbox to open it.
+    </div>
+
+
+    <section class="letters-area" id="lettersArea">
+
+        <div class="envelope" data-letter="reminder">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-left"></div>
+            <div class="envelope-right"></div>
+            <div class="envelope-bottom"></div>
+            <div class="envelope-flap"></div>
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                A Reminder
+            </div>
+
+        </div>
+
+
+        <div class="envelope" data-letter="memory">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-left"></div>
+            <div class="envelope-right"></div>
+            <div class="envelope-bottom"></div>
+            <div class="envelope-flap"></div>
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                A Memory
+            </div>
+
+        </div>
+
+
+        <div class="envelope" data-letter="never">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-left"></div>
+            <div class="envelope-right"></div>
+            <div class="envelope-bottom"></div>
+            <div class="envelope-flap"></div>
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                Something I Never Said
+            </div>
+
+        </div>
+
+
+        <div class="envelope" data-letter="future">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-left"></div>
+            <div class="envelope-right"></div>
+            <div class="envelope-bottom"></div>
+            <div class="envelope-flap"></div>
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                For the Future
+            </div>
+
+        </div>
+
+
+        <div class="envelope" data-letter="apology">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-left"></div>
+            <div class="envelope-right"></div>
+            <div class="envelope-bottom"></div>
+            <div class="envelope-flap"></div>
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                An Apology
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<div class="letter-overlay" id="letterOverlay">
+
+    <article class="letter-paper">
+
+        <button class="close-letter" id="closeLetter">
+            ×
+        </button>
+
+        <h2 class="letter-heading" id="letterHeading"></h2>
+
+        <div class="letter-body" id="letterBody"></div>
+
+    </article>
+
+</div>
+
+
+<script>
+
+const letters = {
+
+    reminder: {
+        title: "A Reminder",
+        text: `
+            <p>Dear Tsuki,</p>
+
+            <p>I don't really know how to say this without making it sound too serious lmao, but I just wanted to tell you that you're very special to me and that you mean a lot to me, just as a friend okay?</p>
+
+            <p>I really want you to know how much you're valued by the people around you. You are so loved, more than you probably realize. &lt;3</p>
+
+            <p>Keep thriving and keep shining.</p>
+
+            <p class="signature">With love,<br>Pulo</p>
+        `
+    },
+
+    memory: {
+        title: "A Memory",
+        text: `
+            <p>Dear Tsuki,</p>
+
+            <p>I still remember when I shamelessly texted you and demanded your covers hahah. I'm still a little embarrassed about it, but I'm happy I did because that random little message ended up becoming something really special to me hehe.</p>
+
+            <p>Also, the way we just became <strong>“besttt friendsss”</strong> on our very first call will always be diabolical to me haha. But yeah, it was such a vibe talking with youu, and I will forever cherish our talks.</p>
+
+            <p class="signature">With love,<br>Pulo</p>
+        `
+    },
+
+    never: {
+        title: "Something I Never Said",
+        text: `
+            <p>Dear Tsuki,</p>
+
+            <p>This is probably something I've never actually told you properly, but yes, initially I liked you so much and it honestly had nothing to do with looks or anything like that. I liked how you actually cared for me and looked out for me. I really admired how you corrected me sometimes, even though I would whine about it lol.</p>
+
+            <p>For me, looks never really played a huge role when it came to someone's personality, so yeah, I fell for the little things you did and the way you always made me feel understood. But when I realized that we're better off as friends, I kinda backed off and accepted that maybe we just weren't meant to be that way. And honestly, that made me realize that some things are beautiful even when they don't turn out the way you once imagined them to.</p>
+
+            <p>So yeah, dw, I don't like you in that way anymore. Just as good friends, I promise. I'm just really glad things turned out the way they did, because I wouldn't want to lose the friendship we have now.</p>
+
+            <p>Anywayyy, that's something I've wanted to tell you for a while hehe. Now you know.</p>
+
+            <p class="signature">With love,<br>Pulo</p>
+        `
+    },
+
+    future: {
+        title: "For the Future",
+        text: `
+            <p>Dear Tsuki,</p>
+
+            <p>I really hope that wherever life takes you, you end up somewhere you're genuinely happy. I hope you get to do all the things you've wanted to do and become the person you've always wanted to be.</p>
+
+            <p>I hope you meet good people along the way, make lots of fun memories, attend my wedding and get me a dog hehe.</p>
+
+            <p>Keep making covers (just so you know, I'm your biggest supporter hehe), keep making people laugh and please sometimes use okayyy instead of ok.</p>
+
+            <p>I don't know what your future is going to look like, but I really hope it's a good one. You deserve a life you're proud of.</p>
+
+            <p>Anywayyy, that's enough wholesome stuff from me. Don't let it get to your head haha.</p>
+
+            <p class="signature">With love,<br>Pulo</p>
+        `
+    },
+
+    apology: {
+        title: "An Apology",
+        text: `
+            <p>Dear Tsuki,</p>
+
+            <p>Okay, this is probably the most random apology letter ever, but I still wanted to write it.</p>
+
+            <p>I'm sorry for all the times I've kept you on call for HOURS just because I had way too much to say. You'd literally just sit there and listen to me yap about everything and somehow never tell me to shut up. You even fell asleep while I was talking once, which still makes me laugh whenever I think about it. I found it really cute though.</p>
+
+            <p>You always used to say that I could never annoy you, but I was still scared that one day I might actually get on your nerves lmao.</p>
+
+            <p>I'm also sorry for making you stay up late because of me, especially when you probably should've been sleeping instead of staying up and replying to all my random stuff.</p>
+
+            <p>And yeah, I'm sorry for liking you too, even though I knew I probably shouldn't have. I never wanted that to make things weird between us, so I hope you can forgive me.</p>
+
+            <p>I guess this is just me saying sorry for all the little things I've probably done without realizing, and thank you for putting up with me anyway.</p>
+
+            <p>You were always way too patient with me, and I really do appreciate that. So, sorry for everything and thank you for putting up with me all this time. I really mean it.</p>
+
+            <p class="signature">With love,<br>Pulo</p>
+        `
+    }
+
+};
+
+
+const mailbox = document.getElementById("mailbox");
+const lettersArea = document.getElementById("lettersArea");
+const instruction = document.getElementById("instruction");
+
+const overlay = document.getElementById("letterOverlay");
+const closeLetter = document.getElementById("closeLetter");
+
+const letterHeading = document.getElementById("letterHeading");
+const letterBody = document.getElementById("letterBody");
+
+const envelopes = document.querySelectorAll(".envelope");
+
+let mailboxOpened = false;
+let selectedLetter = false;
+
+
+mailbox.addEventListener("click", () => {
+
+    if (mailboxOpened) return;
+
+    mailboxOpened = true;
+
+    mailbox.classList.add("open");
+    mailbox.classList.add("shake");
+
+    setTimeout(() => {
+        mailbox.classList.remove("shake");
+    }, 700);
+
+    instruction.innerHTML =
+        "There are five letters inside.<br><strong>You can only choose one.</strong>";
+
+    setTimeout(() => {
+
+        lettersArea.classList.add("visible");
+
+        envelopes.forEach((envelope, index) => {
+
+            setTimeout(() => {
+                envelope.classList.add("pop");
+            }, index * 130);
+
+        });
+
+    }, 550);
+
+});
+
+
+envelopes.forEach(envelope => {
+
+    envelope.addEventListener("click", () => {
+
+        if (selectedLetter) return;
+
+        selectedLetter = true;
+
+        const key = envelope.dataset.letter;
+        const letter = letters[key];
+
+        letterHeading.textContent = letter.title;
+        letterBody.innerHTML = letter.text;
+
+        envelope.classList.add("selected");
+
+        envelopes.forEach(other => {
+
+            if (other !== envelope) {
+                other.classList.add("locked");
+            }
+
+        });
+
+        setTimeout(() => {
+            overlay.classList.add("open");
+        }, 200);
+
+    });
+
+});
+
+
+closeLetter.addEventListener("click", () => {
+    overlay.classList.remove("open");
+});
+
+
+overlay.addEventListener("click", event => {
+
+    if (event.target === overlay) {
+        overlay.classList.remove("open");
+    }
+
+});
+
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+        overlay.classList.remove("open");
+    }
+
+});
+
+
+function createPetal() {
+
+    const petal = document.createElement("div");
+
+    petal.className = "petal";
+
+    petal.style.left =
+        Math.random() * 100 + "vw";
+
+    petal.style.top = "-20px";
+
+    const colors = [
+        "#f4d8dd",
+        "#d5e6ef",
+        "#eee2b5",
+        "#d9e6d0",
+        "#ded7e9"
+    ];
+
+    petal.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+    petal.style.animationDuration =
+        (4 + Math.random() * 3) + "s";
+
+    document.body.appendChild(petal);
+
+    requestAnimationFrame(() => {
+        petal.classList.add("active");
+    });
+
+    setTimeout(() => {
+        petal.remove();
+    }, 7500);
+}
+
+
+setInterval(() => {
+
+    if (document.visibilityState === "visible") {
+        createPetal();
+    }
+
+}, 2600);
+
+
+setInterval(() => {
+
+    if (
+        !mailboxOpened &&
+        document.visibilityState === "visible"
+    ) {
+
+        mailbox.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)"
+                },
+                {
+                    transform: "translateY(-4px) rotate(-1deg)"
+                },
+                {
+                    transform: "translateY(0) rotate(0deg)"
+                }
+            ],
+            {
+                duration: 900,
+                easing: "ease-in-out"
+            }
+        );
+
+    }
+
+}, 6000);
+
+</script>
+
+</body>
+</html>
